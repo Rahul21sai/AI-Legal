@@ -26,7 +26,7 @@ Missing evidence produces **UNBOUND** and stops dependent rows. Dates before the
 | Parameter | Evidence in this repository |
 |---|---|
 | **Code Quality** | Strict TypeScript, exact dependencies, focused domain/AI/server/feature boundaries, current Gemini Interactions API, ESLint with zero warnings, and conventional incremental commits. |
-| **Security** | Same-origin API validation, Zod schemas, evidence grounding, CSP/HSTS/frame/permissions headers, bounded rate limiting, secret-safe logs, frozen lockfile, zero known dependency advisories, pinned CI actions, Dependabot, and `SECURITY.md`. |
+| **Security** | Same-origin API validation, Zod schemas, evidence grounding, CSP/HSTS/frame/permissions headers, bounded rate limiting, secret-safe logs, frozen lockfile, zero known dependency advisories, SHA-pinned CI actions, and `SECURITY.md`. |
 | **Efficiency** | Static application routes, zero database/RAG/vector store, client-side recomputation after binding, low-thinking extraction, narrow snapshots, a 2-second live-source timeout, and manual fallback. |
 | **Testing** | 110 Vitest tests plus 14 Playwright desktop/touch-mobile runs, including red-green domain tests, API failure paths, source drift, real browser flows, and axe. |
 | **Accessibility** | Semantic table/fieldset/label structure, skip link, keyboard navigation, visible focus, 44px targets, non-colour states, reduced motion, responsive stacked ledger, and zero serious/critical axe findings. |
@@ -44,7 +44,7 @@ src/
 └── sources/            # Snapshot registry, hashing, and live verification
 tests/e2e/              # Desktop and touch-mobile Playwright journeys
 docs/                   # Architecture, demo, QA, build record, design and plan
-.github/                # Pinned CI workflow and Dependabot policy
+.github/                # SHA-pinned quality and security workflow
 ~~~
 
 Dependencies point inward: UI and HTTP adapters consume domain contracts; the domain imports no React, network, SDK, or environment code.

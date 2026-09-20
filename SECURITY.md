@@ -16,7 +16,7 @@ Critical and high-severity reports should be assessed within 48 hours. Credentia
 - `pnpm-lock.yaml` is committed and CI installs it with `--frozen-lockfile --ignore-scripts`.
 - Only the reviewed `sharp` native dependency is rebuilt in CI.
 - CI enforces the frozen pnpm integrity lockfile, rejects high-severity advisories, and runs lint, type-checking, 110 unit/component tests, the production build, and 14 browser runs.
-- Dependabot checks npm dependencies weekly; critical and high security updates are P1 and should be reviewed within 48 hours.
+- Enable Dependabot alerts and security updates under GitHub **Settings → Code security**. Critical and high security updates are P1 and should be reviewed within 48 hours. Automated version updates are intentionally not configured because GitHub's hosted updater failed against this pnpm 11 repository even with its documented minimal configuration.
 
 ## Compromised-dependency response
 

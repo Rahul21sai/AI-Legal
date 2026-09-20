@@ -33,9 +33,16 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
           <Link className="wordmark" href="/" aria-label="ProofClock home">
             ProofClock
           </Link>
-          <span className="header-note">Legal information, worked visibly</span>
+          <nav aria-label="Primary navigation">
+            <Link href="/">Calculator</Link>
+            <Link href="/method">Method</Link>
+          </nav>
         </header>
         {children}
+        <footer className="site-footer">
+          <p>Legal information, not legal advice.</p>
+          <p>The selected rule and trigger remain under human control.</p>
+        </footer>
       </body>
     </html>
   );

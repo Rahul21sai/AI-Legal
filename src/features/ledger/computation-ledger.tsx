@@ -102,7 +102,7 @@ export function ComputationLedger({
                   <span>{row.label}</span>
                   <small>{row.provision}</small>
                 </th>
-                <td>
+                <td data-label="Working">
                   {row.state === 'BOUND' ? (
                     <span>
                       {row.inputs.map((input) => formatIsoDate(input.value)).join(' / ')}
@@ -111,7 +111,7 @@ export function ComputationLedger({
                     <span>Calculation stopped</span>
                   )}
                 </td>
-                <td>
+                <td data-label="Result">
                   <ResultCell row={row} />
                 </td>
               </tr>

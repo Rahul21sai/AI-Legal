@@ -27,3 +27,7 @@ export function getSnapshot(id: string): SourceSnapshot {
 export function getSnapshotsForPack(pack: RulePack): readonly SourceSnapshot[] {
   return pack.sourceRefs.map(getSnapshot);
 }
+
+export function getAllSnapshots(): readonly SourceSnapshot[] {
+  return snapshots.map((snapshot) => getSnapshot(snapshot.id));
+}

@@ -65,6 +65,15 @@ a {
   border-bottom: 1px solid var(--rule);
 }
 
+.site-header nav {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.site-header nav a {
+  text-underline-offset: 0.25rem;
+}
+
 .wordmark {
   font-family: var(--serif);
   font-size: 1.3rem;
@@ -592,6 +601,10 @@ h2 {
   background: var(--surface);
 }
 
+.source-card:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
 .source-meta,
 .source-actions {
   display: flex;
@@ -656,6 +669,128 @@ h2 {
   font-size: 0.82rem;
 }
 
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  width: min(100% - 2rem, 74rem);
+  margin: 0 auto;
+  padding: 1.5rem 0 2.5rem;
+  border-top: 1px solid var(--rule);
+  color: var(--muted-ink);
+  font-size: 0.82rem;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+.method-page {
+  max-width: 74rem;
+}
+
+.method-intro {
+  max-width: 58rem;
+}
+
+.method-intro > p:first-child {
+  margin: 0 0 1rem;
+  color: var(--stamp-violet);
+  font-weight: 700;
+}
+
+.method-intro h1 {
+  max-width: 14ch;
+  font-size: clamp(3rem, 8vw, 6.5rem);
+}
+
+.method-intro > p:not(:first-child) {
+  max-width: 48rem;
+  font-family: var(--serif);
+  font-size: 1.25rem;
+}
+
+.method-link {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  margin-top: 1rem;
+  padding: 0.55rem 0.8rem;
+  border: 1px solid var(--carbon-blue);
+  color: var(--carbon-blue);
+  font-weight: 700;
+}
+
+.method-chain {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: 4rem;
+  padding: 1px;
+  background: var(--rule);
+}
+
+.method-chain article,
+.method-grid article {
+  padding: 1.5rem;
+  background: var(--surface);
+}
+
+.method-chain article > span {
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border: 1px solid var(--stamp-violet);
+  color: var(--stamp-violet);
+  font-weight: 700;
+}
+
+.method-chain h2,
+.method-grid h2,
+.method-section h2 {
+  margin: 1.5rem 0 0.5rem;
+  font-family: var(--serif);
+}
+
+.method-chain p,
+.method-grid p {
+  margin: 0;
+  color: var(--muted-ink);
+}
+
+.method-section {
+  margin-top: 4rem;
+  padding-top: 1rem;
+  border-top: 4px solid var(--carbon-blue);
+}
+
+.file-map {
+  border-top: 1px solid var(--rule);
+}
+
+.file-map > div {
+  display: grid;
+  grid-template-columns: minmax(10rem, 0.6fr) 1fr;
+  gap: 1rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.file-map dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.method-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: 4rem;
+  padding: 1px;
+  background: var(--rule);
+}
+
 .pack-warning {
   padding: 1rem 1.25rem;
   color: var(--muted-ink);
@@ -677,6 +812,11 @@ h2 {
 @media (max-width: 46rem) {
   .header-note {
     display: none;
+  }
+
+  .site-header nav {
+    gap: 0.75rem;
+    font-size: 0.9rem;
   }
 
   .ledger-heading {
@@ -714,6 +854,74 @@ h2 {
 
   .source-list {
     grid-template-columns: 1fr;
+  }
+
+  .source-card:last-child:nth-child(odd) {
+    grid-column: auto;
+  }
+
+  .table-scroll {
+    overflow: visible;
+  }
+
+  .computation-table,
+  .computation-table tbody,
+  .computation-table tr,
+  .computation-table th,
+  .computation-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .computation-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+  }
+
+  .computation-table tr {
+    padding: 1rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .computation-table th,
+  .computation-table td {
+    min-width: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  .computation-table td {
+    margin-top: 0.8rem;
+    padding-top: 0.8rem;
+    border-top: 1px dotted var(--rule);
+  }
+
+  .computation-table td::before {
+    display: block;
+    margin-bottom: 0.25rem;
+    color: var(--muted-ink);
+    content: attr(data-label);
+    font-size: 0.72rem;
+    font-weight: 700;
+  }
+
+  .site-footer,
+  .method-chain,
+  .method-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .site-footer {
+    display: grid;
+  }
+
+  .file-map > div {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
   }
 
   .binding-seam {

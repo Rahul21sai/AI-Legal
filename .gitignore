@@ -1,6 +1,7 @@
 # Dependencies and generated output
 /node_modules/
 /.next/
+/next-env.d.ts
 /out/
 /coverage/
 /test-results/

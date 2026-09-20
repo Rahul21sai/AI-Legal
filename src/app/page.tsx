@@ -1,6 +1,11 @@
 import { ProofClockWorkbench } from '@/features/workbench/proofclock-workbench';
+import { rulePacks } from '@/domain/rule-packs/registry';
+import { getSnapshotsForPack } from '@/sources/registry';
 
 export default function Page() {
+  const snapshotsByPack = Object.fromEntries(
+    rulePacks.map((pack) => [pack.id, getSnapshotsForPack(pack)]),
+  );
   return (
     <main id="main-content">
       <section className="intro" aria-labelledby="page-title">
@@ -12,7 +17,7 @@ export default function Page() {
         </p>
       </section>
 
-      <ProofClockWorkbench />
+      <ProofClockWorkbench snapshotsByPack={snapshotsByPack} />
     </main>
   );
 }

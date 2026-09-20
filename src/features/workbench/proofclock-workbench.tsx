@@ -9,10 +9,16 @@ import { CandidateBindingList } from '@/features/evidence/candidate-binding-list
 import { ExtractEventsPanel } from '@/features/evidence/extract-events-panel';
 import { ComputationLedger } from '@/features/ledger/computation-ledger';
 import { PromptInspector } from '@/features/prompt-inspector/prompt-inspector';
+import { SourcePanel } from '@/features/provenance/source-panel';
+import type { SourceSnapshot } from '@/sources/contracts';
 import { RuleSelector } from '@/features/rule-selector/rule-selector';
 import { initialWorkbenchState, workbenchReducer } from './workbench-reducer';
 
-export function ProofClockWorkbench() {
+export function ProofClockWorkbench({
+  snapshotsByPack = {},
+}: Readonly<{
+  snapshotsByPack?: Readonly<Record<string, readonly SourceSnapshot[] | undefined>>;
+}>) {
   const [state, dispatch] = useReducer(workbenchReducer, initialWorkbenchState);
   const pack = state.selectedPackId ? getRulePack(state.selectedPackId) : null;
   const result = useMemo(() => {
@@ -76,6 +82,9 @@ export function ProofClockWorkbench() {
           </div>
           {state.extraction.status === 'success' && (
             <PromptInspector trace={state.extraction.trace} />
+          )}
+          {(snapshotsByPack[pack.id]?.length ?? 0) > 0 && (
+            <SourcePanel snapshots={snapshotsByPack[pack.id] ?? []} />
           )}
         </>
       )}

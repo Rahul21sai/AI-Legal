@@ -1,0 +1,53 @@
+[
+  {
+    "id": "ni-act-138-b",
+    "instrumentTitle": "The Negotiable Instruments Act, 1881",
+    "provision": "Section 138(b)",
+    "excerpts": [
+      "(b) the payee or the holder in due course of the cheque, as the case may be, makes a demand for the payment of the said amount of money by giving a notice; in writing, to the drawer of the cheque, 3[within thirty days] of the receipt of information by him from the bank regarding the return of the cheque as unpaid; and"
+    ],
+    "sourceUrl": "https://indiacode.ecourtsindia.com/api/v1/ni-act/section/138",
+    "sourceFormat": "ecourts-section-json",
+    "publisher": "eCourtsIndia",
+    "authority": "third-party-mirror",
+    "retrievedAt": "2026-09-20",
+    "attribution": "IndiaCode by eCourtsIndia",
+    "authorityNote": "Third-party structured mirror. The Gazette of India or official text prevails if any text differs.",
+    "license": "CC BY 4.0",
+    "normalizedSha256": "5fbb2dcc0adf0e3017ebeefab0ae8020dd45ae832ff134ab2c216969f20edf9a"
+  },
+  {
+    "id": "ni-act-138-c",
+    "instrumentTitle": "The Negotiable Instruments Act, 1881",
+    "provision": "Section 138(c)",
+    "excerpts": [
+      "(c) the drawer of such cheque fails to make the payment of the said amount of money to the payee or, as the case may be, to the holder in due course of the cheque, within fifteen days of the receipt of the said notice."
+    ],
+    "sourceUrl": "https://indiacode.ecourtsindia.com/api/v1/ni-act/section/138",
+    "sourceFormat": "ecourts-section-json",
+    "publisher": "eCourtsIndia",
+    "authority": "third-party-mirror",
+    "retrievedAt": "2026-09-20",
+    "attribution": "IndiaCode by eCourtsIndia",
+    "authorityNote": "Third-party structured mirror. The Gazette of India or official text prevails if any text differs.",
+    "license": "CC BY 4.0",
+    "normalizedSha256": "fe65ebf24974dac882a76ec20953a42ffd4822bf599d7e2eb7ff1c112e2bd3b7"
+  },
+  {
+    "id": "ni-act-142-1-b",
+    "instrumentTitle": "The Negotiable Instruments Act, 1881",
+    "provision": "Section 142(1)(b)",
+    "excerpts": [
+      "(b) such complaint is made within one month of the date on which the cause of action arises under clause (c) of the proviso to section 138: 2[Provided that the cognizance of a complaint may be taken by the Court after the prescribed period, if the complainant satisfies the Court that he had sufficient cause for not making a complaint within such period;]"
+    ],
+    "sourceUrl": "https://indiacode.ecourtsindia.com/api/v1/ni-act/section/142",
+    "sourceFormat": "ecourts-section-json",
+    "publisher": "eCourtsIndia",
+    "authority": "third-party-mirror",
+    "retrievedAt": "2026-09-20",
+    "attribution": "IndiaCode by eCourtsIndia",
+    "authorityNote": "Third-party structured mirror. The Gazette of India or official text prevails if any text differs.",
+    "license": "CC BY 4.0",
+    "normalizedSha256": "c1f595056b9dce2f9dfca2cac9cc2ad85a2c76cb09654298228759707d139bd1"
+  }
+]

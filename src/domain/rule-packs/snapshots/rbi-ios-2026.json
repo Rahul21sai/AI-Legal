@@ -1,0 +1,20 @@
+[
+  {
+    "id": "rbi-ios-2026-timing",
+    "instrumentTitle": "Reserve Bank - Integrated Ombudsman Scheme, 2026",
+    "provision": "RBI FAQ questions 1 and 17",
+    "excerpts": [
+      "It comes into force with effect from July 1, 2026. RB-IOS, 2026 replaces the Reserve Bank - Integrated Ombudsman Scheme, 2021.",
+      "A complaint can be filed before the RBI Ombudsman if the complainant has not received any reply within 30 days or within the time specified by RBI, NPCI or Card Network guidelines, if any, whichever is higher, after the Regulated Entity received the complaint; or if the complainant is not satisfied with the reply/resolution provided by the Regulated Entity.",
+      "The complaint must be made to the RBI Ombudsman within 90 days from the date on which the above timeline expires or the date of the last communication from the concerned Regulated Entity, whichever is later."
+    ],
+    "sourceUrl": "https://www.rbi.org.in/commonperson/english/Scripts/FAQs.aspx?Id=3407",
+    "sourceFormat": "html",
+    "publisher": "Reserve Bank of India",
+    "authority": "official",
+    "retrievedAt": "2026-09-20",
+    "attribution": "Reserve Bank of India",
+    "authorityNote": "RBI states that the FAQ is general guidance and that the Scheme and current RBI instruments govern.",
+    "normalizedSha256": "874fde0eeafcdd5efd9ec142689572b2e2c6aa35899e1d790223837c4865371a"
+  }
+]

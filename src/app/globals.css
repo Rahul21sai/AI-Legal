@@ -573,6 +573,89 @@ h2 {
   overflow-wrap: anywhere;
 }
 
+.source-panel {
+  margin-top: 3rem;
+  border-top: 4px solid var(--carbon-blue);
+}
+
+.source-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  padding: 1px;
+  background: var(--rule);
+}
+
+.source-card {
+  min-width: 0;
+  padding: 1.25rem;
+  background: var(--surface);
+}
+
+.source-meta,
+.source-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.source-meta {
+  color: var(--stamp-violet);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.source-card h3 {
+  margin: 1rem 0 0.25rem;
+  font-family: var(--serif);
+}
+
+.source-card > p {
+  color: var(--muted-ink);
+}
+
+.source-card blockquote {
+  margin: 1rem 0;
+  padding: 1rem;
+  border-left: 3px solid var(--stamp-violet);
+  background: var(--registry-white);
+  font-family: var(--serif);
+}
+
+.authority-note {
+  color: var(--seal-red) !important;
+  font-weight: 700;
+}
+
+.source-actions a,
+.source-actions button {
+  min-height: 2.75rem;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--carbon-blue);
+  border-radius: 0;
+  background: transparent;
+  color: var(--carbon-blue);
+  font: inherit;
+  font-weight: 700;
+}
+
+.source-actions a {
+  display: inline-flex;
+  align-items: center;
+}
+
+.source-actions button {
+  cursor: pointer;
+}
+
+.source-status {
+  min-height: 1.5rem;
+  margin-bottom: 0 !important;
+  font-size: 0.82rem;
+}
+
 .pack-warning {
   padding: 1rem 1.25rem;
   color: var(--muted-ink);
@@ -627,6 +710,10 @@ h2 {
 
   .anchor-help {
     grid-column: 1;
+  }
+
+  .source-list {
+    grid-template-columns: 1fr;
   }
 
   .binding-seam {

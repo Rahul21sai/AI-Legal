@@ -5,7 +5,10 @@ import { useMemo, useReducer } from 'react';
 import { evaluateRulePack } from '@/domain/clock/evaluate';
 import { getRulePack, rulePacks } from '@/domain/rule-packs/registry';
 import { ManualEvidenceLedger } from '@/features/evidence/manual-evidence-ledger';
+import { CandidateBindingList } from '@/features/evidence/candidate-binding-list';
+import { ExtractEventsPanel } from '@/features/evidence/extract-events-panel';
 import { ComputationLedger } from '@/features/ledger/computation-ledger';
+import { PromptInspector } from '@/features/prompt-inspector/prompt-inspector';
 import { RuleSelector } from '@/features/rule-selector/rule-selector';
 import { initialWorkbenchState, workbenchReducer } from './workbench-reducer';
 
@@ -38,16 +41,43 @@ export function ProofClockWorkbench() {
           <p>Select a clock to reveal its named anchors and worked rows.</p>
         </div>
       ) : (
-        <div className="workbench-grid">
-          <ManualEvidenceLedger
-            bindings={state.bindings}
-            onChange={(anchorId, value) =>
-              dispatch({ type: 'edit_manual_anchor', anchorId, value })
-            }
-            pack={pack}
-          />
-          <ComputationLedger pack={pack} result={result} />
-        </div>
+        <>
+          <div className="workbench-grid">
+            <div className="evidence-column">
+              <ManualEvidenceLedger
+                bindings={state.bindings}
+                onChange={(anchorId, value) =>
+                  dispatch({ type: 'edit_manual_anchor', anchorId, value })
+                }
+                pack={pack}
+              />
+              <ExtractEventsPanel
+                onFailure={(message) =>
+                  dispatch({ type: 'extraction_failed', message })
+                }
+                onStart={() => dispatch({ type: 'extraction_started' })}
+                onSuccess={(trace) =>
+                  dispatch({ type: 'extraction_succeeded', trace })
+                }
+                packId={pack.id}
+                status={state.extraction.status}
+              />
+              {state.extraction.status === 'success' && (
+                <CandidateBindingList
+                  bindings={state.bindings}
+                  candidates={state.extraction.trace.accepted}
+                  onConfirm={(candidate) =>
+                    dispatch({ type: 'confirm_candidate', candidate })
+                  }
+                />
+              )}
+            </div>
+            <ComputationLedger pack={pack} result={result} />
+          </div>
+          {state.extraction.status === 'success' && (
+            <PromptInspector trace={state.extraction.trace} />
+          )}
+        </>
       )}
     </section>
   );

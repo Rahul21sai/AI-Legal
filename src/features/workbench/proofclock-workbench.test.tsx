@@ -1,6 +1,8 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+import type { ExtractionTrace } from '@/ai/extract-service';
+
 import { ProofClockWorkbench } from './proofclock-workbench';
 
 test('shows unbound receipt rows and recomputes after a manual receipt date', async () => {
@@ -57,4 +59,53 @@ test('does not present date controls before a clock is selected', () => {
   expect(
     screen.getByText(/select a clock to reveal its named anchors/i),
   ).toBeVisible();
+});
+
+test('binds a reviewed Gemini candidate and keeps the manual field editable', async () => {
+  const user = userEvent.setup();
+  const trace: ExtractionTrace = {
+    prompt: {
+      version: 'extract-events.v1',
+      model: 'gemini-3.8-flash',
+      thinkingLevel: 'low',
+      systemInstruction: 'Boundary',
+      userInput: 'Memo received 18 Jul 2026.',
+      responseJsonSchema: { type: 'object' },
+    },
+    rawResponse: { candidates: [] },
+    accepted: [
+      {
+        eventKind: 'bank_information_received',
+        evidenceQuote: 'Memo received 18 Jul 2026.',
+        range: { start: 0, end: 27 },
+        normalizedDate: '2026-07-18',
+        dateSourceText: '18 Jul 2026',
+        bindable: true,
+        requiresConfirmation: true,
+      },
+    ],
+    rejected: [],
+  };
+  vi.stubGlobal(
+    'fetch',
+    vi.fn().mockResolvedValue(
+      new Response(JSON.stringify({ ok: true, requestId: 'req-3', trace }), {
+        status: 200,
+        headers: { 'content-type': 'application/json' },
+      }),
+    ),
+  );
+  render(<ProofClockWorkbench />);
+  await user.click(screen.getByRole('radio', { name: /cheque dishonour/i }));
+  await user.type(
+    screen.getByLabelText(/short evidence text/i),
+    'Memo received 18 Jul 2026.',
+  );
+  await user.click(screen.getByRole('checkbox'));
+  await user.click(screen.getByRole('button', { name: /extract dated events/i }));
+  await user.click(screen.getByRole('button', { name: /review and bind/i }));
+
+  expect(screen.getByLabelText(/bank information received/i)).toHaveValue('2026-07-18');
+  expect(screen.getByText(/confirmed from extracted evidence/i)).toBeVisible();
+  vi.unstubAllGlobals();
 });

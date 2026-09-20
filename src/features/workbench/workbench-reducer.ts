@@ -1,5 +1,5 @@
-import type { BindableCandidate, ExtractionPrompt, GuardResult } from '@/ai/contracts';
-import type { RawExtractionResponse } from '@/ai/contracts';
+import type { BindableCandidate } from '@/ai/contracts';
+import type { ExtractionTrace } from '@/ai/extract-service';
 import type { IsoDate } from '@/domain/clock/types';
 import type { RulePackId } from '@/domain/rule-packs/types';
 
@@ -15,12 +15,7 @@ export type WorkbenchExtractionState =
   | Readonly<{ status: 'loading' }>
   | Readonly<{
       status: 'success';
-      trace: Readonly<{
-        prompt: ExtractionPrompt;
-        rawResponse: RawExtractionResponse;
-        accepted: GuardResult['accepted'];
-        rejected: GuardResult['rejected'];
-      }>;
+      trace: ExtractionTrace;
     }>
   | Readonly<{ status: 'error'; message: string }>;
 

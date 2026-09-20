@@ -231,7 +231,7 @@ git commit -m "chore: scaffold ProofClock application"
 - Produces: parseIsoDate(value: string): PlainDateResult
 - Produces: applyClockOperation(inputs: readonly string[], operation: ClockOperation): IsoDate
 - Produces: compareIsoDates(left: IsoDate, right: IsoDate): -1 | 0 | 1
-- Produces: ClockOperation union add_days, add_months, next_day, later_of, and copy.
+- Produces: ClockOperation union add_days, add_months, next_day, later_of, first_available, and copy.
 
 - [ ] **Step 1: Write failing primitive tests**
 
@@ -275,6 +275,7 @@ export type ClockOperation =
   | { readonly kind: 'add_months'; readonly amount: number }
   | { readonly kind: 'next_day' }
   | { readonly kind: 'later_of' }
+  | { readonly kind: 'first_available' }
   | { readonly kind: 'copy' };
 ~~~
 

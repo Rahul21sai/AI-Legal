@@ -1,3 +1,5 @@
+// @vitest-environment node
+
 import {
   applyClockOperation,
   ClockInputError,
@@ -59,6 +61,14 @@ describe('date-only arithmetic', () => {
     expect(
       applyClockOperation(['2026-08-10', '2026-08-10'], { kind: 'later_of' }),
     ).toBe('2026-08-10');
+  });
+
+  test('takes the first available input without comparing fallback values', () => {
+    expect(
+      applyClockOperation(['2026-08-01', '2026-08-10'], {
+        kind: 'first_available',
+      }),
+    ).toBe('2026-08-01');
   });
 
   test('rejects negative operation amounts', () => {

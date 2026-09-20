@@ -1,0 +1,93 @@
+import type { RulePack } from './types';
+import { validateRulePack } from './types';
+
+export const rbiOmbudsman2026: RulePack = validateRulePack({
+  id: 'rbi-ombudsman-2026',
+  version: '2026-09-20.1',
+  title: 'RBI Ombudsman 2026',
+  jurisdiction: 'India',
+  scope: 'A worked arithmetic chain for the reviewed RB-IOS 2026 timing rule.',
+  warning: 'Legal information only. Maintainability and remedy selection are not evaluated.',
+  anchors: [
+    {
+      id: 'complaint_to_regulated_entity',
+      eventKind: 'complaint_to_regulated_entity',
+      label: 'Complaint sent to regulated entity',
+      legalPhrase: 'date of the complaint to the regulated entity',
+      evidenceExamples: ['Complaint acknowledgement', 'Email delivery record'],
+      required: true,
+    },
+    {
+      id: 'applicable_response_timeline_end',
+      eventKind: 'applicable_response_timeline_end',
+      label: 'Confirmed applicable response timeline end',
+      legalPhrase: 'date on which the applicable timeline expires',
+      evidenceExamples: ['Instrument stating a different response timeline'],
+      required: false,
+    },
+    {
+      id: 'last_communication_from_entity',
+      eventKind: 'last_communication_from_entity',
+      label: 'Last communication from regulated entity',
+      legalPhrase: 'date of the last communication from the regulated entity',
+      evidenceExamples: ['Final response', 'Latest written communication'],
+      required: false,
+    },
+  ],
+  steps: [
+    {
+      id: 'standard_response_boundary',
+      label: 'Standard response-period boundary',
+      provision: 'Reserve Bank - Integrated Ombudsman Scheme 2026',
+      sourceRef: 'rbi-ios-2026-timing',
+      inputs: [{ ref: 'complaint_to_regulated_entity', required: true }],
+      operation: { kind: 'add_days', amount: 30 },
+      missingEvidence: 'A confirmed date for the complaint to the regulated entity.',
+      caveats: ['A separately confirmed applicable timeline can replace this fallback.'],
+    },
+    {
+      id: 'response_timeline_anchor',
+      label: 'Applicable response-timeline anchor',
+      provision: 'Reserve Bank - Integrated Ombudsman Scheme 2026',
+      sourceRef: 'rbi-ios-2026-timing',
+      inputs: [
+        { ref: 'applicable_response_timeline_end', required: false },
+        { ref: 'standard_response_boundary', required: true },
+      ],
+      operation: { kind: 'first_available' },
+      missingEvidence: 'A response-timeline anchor must be confirmed or calculated.',
+      caveats: ['A confirmed applicable timeline takes precedence over the standard fallback.'],
+    },
+    {
+      id: 'window_anchor',
+      label: 'Later available window anchor',
+      provision: 'Reserve Bank - Integrated Ombudsman Scheme 2026',
+      sourceRef: 'rbi-ios-2026-timing',
+      inputs: [
+        { ref: 'response_timeline_anchor', required: true },
+        { ref: 'last_communication_from_entity', required: false },
+      ],
+      operation: { kind: 'later_of' },
+      missingEvidence: 'The response-timeline anchor must be available.',
+      caveats: ['The later available confirmed date is selected mechanically.'],
+    },
+    {
+      id: 'ombudsman_boundary',
+      label: 'RB-IOS 2026 period boundary',
+      provision: 'Reserve Bank - Integrated Ombudsman Scheme 2026',
+      sourceRef: 'rbi-ios-2026-timing',
+      inputs: [{ ref: 'window_anchor', required: true }],
+      operation: { kind: 'add_days', amount: 90 },
+      missingEvidence: 'The later window anchor must be available.',
+      caveats: ['Maintainability, exclusions, and extensions are not evaluated.'],
+    },
+  ],
+  sourceRefs: ['rbi-ios-2026-timing'],
+  caveats: ['This pack applies only to the reviewed scheme in force from 1 July 2026.'],
+  coverage: {
+    anchorId: 'complaint_to_regulated_entity',
+    notBefore: '2026-07-01',
+    code: 'PREDATES_RBI_IOS_2026',
+    message: 'The reviewed RB-IOS 2026 pack starts on 1 July 2026.',
+  },
+});

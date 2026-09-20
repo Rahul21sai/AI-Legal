@@ -90,6 +90,16 @@ export function applyClockOperation(
         )
         .toString();
     }
+    case 'first_available': {
+      if (inputs.length === 0) {
+        throw new ClockInputError('WRONG_INPUT_COUNT');
+      }
+      const first = inputs[0];
+      if (first === undefined) {
+        throw new ClockInputError('WRONG_INPUT_COUNT');
+      }
+      return requirePlainDate(first).toString();
+    }
   }
 }
 

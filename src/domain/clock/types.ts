@@ -5,6 +5,7 @@ export type ClockOperation =
   | Readonly<{ kind: 'add_months'; amount: number }>
   | Readonly<{ kind: 'next_day' }>
   | Readonly<{ kind: 'later_of' }>
+  | Readonly<{ kind: 'first_available' }>
   | Readonly<{ kind: 'copy' }>;
 
 export type PlainDateResult =

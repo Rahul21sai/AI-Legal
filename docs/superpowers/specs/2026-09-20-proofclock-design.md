@@ -162,6 +162,7 @@ ClockOperation is one of:
 - add calendar months.
 - add one day to create the next-day event.
 - choose the later of two confirmed anchors.
+- choose the first available anchor in a declared fallback order.
 - copy an anchor for display.
 
 ClockStep contains:

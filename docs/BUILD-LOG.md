@@ -50,7 +50,7 @@ This log records public, non-secret decisions and checkpoints for PromptWars pro
 
 - Re-audited the full implementation against Code Quality, Security, Efficiency, Testing, Accessibility, and Problem Statement Alignment.
 - Confirmed zero known production or development dependency vulnerabilities and no tracked credentials or unsafe DOM/code-execution patterns.
-- Added SHA-pinned GitHub Actions verification, weekly grouped Dependabot updates, `SECURITY.md`, and explicit contribution/coding standards.
+- Added SHA-pinned GitHub Actions verification, weekly Dependabot version updates, `SECURITY.md`, and explicit contribution/coding standards.
 - Added form metadata, 44px navigation targets, hover/touch states, balanced headings, tabular numerals, locale-driven date formatting, and a date-format regression test.
 - Expanded the README with an evaluator evidence map, repository structure, and an honest submission-readiness checklist.
 - Reverified 110 Vitest tests, 14 Playwright runs, lint, strict TypeScript, production build, dependency audit, and frozen script-disabled installation.

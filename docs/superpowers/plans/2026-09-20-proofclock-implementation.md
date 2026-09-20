@@ -6,7 +6,7 @@
 
 **Architecture:** A dependency-free domain layer owns date-only arithmetic and rule-pack evaluation. React provides a client-side evidence ledger and computation worksheet; thin Next.js routes adapt the Gemini and live-source ports. Committed source snapshots and manual date entry remain functional when every external service is unavailable.
 
-**Tech Stack:** Node.js 22.23.1, pnpm 11.19.0, Next.js 16.3.5, React 19.3.0, TypeScript 7.0.2, Zod 4.6.5, Google GenAI SDK 2.23.0, Temporal polyfill 0.5.1, Vitest 5.0.1, Testing Library, Playwright 1.63.0, vanilla CSS.
+**Tech Stack:** Node.js 22.23.1, pnpm 11.19.0, Next.js 16.3.5, React 19.3.0, TypeScript 6.0.3, Zod 4.6.5, Google GenAI SDK 2.23.0, Temporal polyfill 0.5.1, Vitest 5.0.1, Testing Library, Playwright 1.63.0, vanilla CSS.
 
 **Spec:** docs/superpowers/specs/2026-09-20-proofclock-design.md
 
@@ -165,11 +165,10 @@ Create package.json with exact versions:
     "@types/node": "26.6.2",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
-    "eslint": "10.11.0",
+    "eslint": "9.39.5",
     "eslint-config-next": "16.3.5",
     "jsdom": "30.1.0",
-    "typescript": "7.0.2",
-    "vite-tsconfig-paths": "6.1.1",
+    "typescript": "6.0.3",
     "vitest": "5.0.1"
   }
 }

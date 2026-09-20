@@ -1,0 +1,34 @@
+# Dependencies and generated output
+/node_modules/
+/.next/
+/out/
+/coverage/
+/test-results/
+/playwright-report/
+/blob-report/
+
+# Local environment and logs
+.env*
+!.env.example
+*.log
+*.tsbuildinfo
+
+# Editor and operating-system files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Local research artifacts: retained outside the public project history
+/.event-page.md
+/az_qr.txt
+/sc_2jul2026.txt
+/sci_limcalc.txt
+/docs/00-BRIEF.md
+/docs/01-VERIFIED-CORRECTIONS.md
+/docs/10-recon-pain-and-sources.md
+/docs/11-recon-commoditization.md
+/docs/12-recon-gemini.md
+/docs/13-recon-evaluator.md
+/docs/14-recon-guardrails.md
+/docs/20-concepts-ranked.md

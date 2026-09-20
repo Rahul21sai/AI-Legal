@@ -24,7 +24,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <html lang="en-IN">
+    <html data-scroll-behavior="smooth" lang="en-IN">
       <body>
         <a className="skip-link" href="#main-content">
           Skip to calculator

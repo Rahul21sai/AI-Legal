@@ -14,6 +14,9 @@ export type AnchorDefinition = Readonly<{
   legalPhrase: string;
   evidenceExamples: readonly string[];
   required: boolean;
+  candidateGuard?: Readonly<{
+    requiredAny: readonly string[];
+  }>;
 }>;
 
 export type StepDefinition = Readonly<{

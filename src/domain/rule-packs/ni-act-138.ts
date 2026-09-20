@@ -40,6 +40,17 @@ export const niAct138: RulePack = validateRulePack({
       legalPhrase: 'receipt of the notice by the drawer',
       evidenceExamples: ['Delivery tracking', 'Acknowledgement of service'],
       required: true,
+      candidateGuard: {
+        requiredAny: [
+          'delivered',
+          'delivery',
+          'received',
+          'receipt',
+          'acknowledged',
+          'acknowledgement',
+          'served',
+        ],
+      },
     },
   ],
   steps: [

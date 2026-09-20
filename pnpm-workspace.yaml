@@ -1,3 +1,5 @@
 saveExact: true
 engineStrict: true
 strictPeerDependencies: true
+allowBuilds:
+  sharp: true

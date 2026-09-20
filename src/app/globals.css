@@ -29,6 +29,7 @@ body {
   color: var(--graphite);
   font-family: var(--sans);
   line-height: 1.55;
+  -webkit-tap-highlight-color: rgb(23 50 77 / 18%);
 }
 
 a {
@@ -71,10 +72,30 @@ a {
 }
 
 .site-header nav a {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
   text-underline-offset: 0.25rem;
 }
 
+a:hover,
+button:hover:not(:disabled) {
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.25rem;
+}
+
+button,
+input,
+textarea,
+summary,
+a {
+  touch-action: manipulation;
+}
+
 .wordmark {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
   font-family: var(--serif);
   font-size: 1.3rem;
   font-weight: 700;
@@ -107,6 +128,11 @@ h2 {
   margin: 0;
   font-family: var(--serif);
   line-height: 1.05;
+  text-wrap: balance;
+}
+
+:where(h1, h2, h3, h4)[id] {
+  scroll-margin-top: 5rem;
 }
 
 h1 {
@@ -356,6 +382,7 @@ h2 {
   color: var(--carbon-blue);
   font-family: var(--serif);
   font-size: 1.15rem;
+  font-variant-numeric: tabular-nums;
 }
 
 .row-unbound {
@@ -637,8 +664,8 @@ h2 {
   font-family: var(--serif);
 }
 
-.authority-note {
-  color: var(--seal-red) !important;
+.source-card > .authority-note {
+  color: var(--seal-red);
   font-weight: 700;
 }
 
@@ -665,7 +692,7 @@ h2 {
 
 .source-status {
   min-height: 1.5rem;
-  margin-bottom: 0 !important;
+  margin-bottom: 0;
   font-size: 0.82rem;
 }
 

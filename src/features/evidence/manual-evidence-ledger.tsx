@@ -31,9 +31,11 @@ export function ManualEvidenceLedger({
               </label>
               <input
                 aria-describedby={helpId}
+                autoComplete="off"
                 id={inputId}
                 max="9999-12-31"
                 min="1900-01-01"
+                name={anchor.id}
                 onChange={(event) => onChange(anchor.id, event.currentTarget.value)}
                 type="date"
                 value={bindings[anchor.id]?.date ?? ''}

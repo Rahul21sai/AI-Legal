@@ -19,7 +19,7 @@ function JsonBlock({ label, value }: Readonly<{ label: string; value: unknown }>
     <section className="inspector-block">
       <div>
         <h4>{label}</h4>
-        <button onClick={() => void copy()} type="button">
+        <button aria-live="polite" onClick={() => void copy()} type="button">
           {copied ? 'Copied' : `Copy ${label.toLowerCase()}`}
         </button>
       </div>

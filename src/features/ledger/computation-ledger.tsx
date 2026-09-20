@@ -1,27 +1,28 @@
 import type { EvaluationResult, EvaluationRow } from '@/domain/clock/evaluate';
+import { parseIsoDate } from '@/domain/clock/plain-date';
 import type { ClockOperation } from '@/domain/clock/types';
 import type { RulePack } from '@/domain/rule-packs/types';
 
-const MONTHS = [
-  'Jan',
-  'Feb',
-  'Mar',
-  'Apr',
-  'May',
-  'Jun',
-  'Jul',
-  'Aug',
-  'Sep',
-  'Oct',
-  'Nov',
-  'Dec',
-] as const;
+const DATE_FORMATTER = new Intl.DateTimeFormat('en-IN', {
+  day: '2-digit',
+  month: 'short',
+  year: 'numeric',
+  timeZone: 'UTC',
+});
 
 export function formatIsoDate(value: string): string {
-  const [year, month, day] = value.split('-');
-  const monthName = month ? MONTHS[Number(month) - 1] : undefined;
-  if (!year || !monthName || !day) return value;
-  return `${day} ${monthName} ${year}`;
+  const parsed = parseIsoDate(value);
+  if (!parsed.ok) return value;
+  const [year, month, day] = parsed.value.split('-');
+  if (!year || !month || !day) return value;
+  const timestamp = Date.UTC(Number(year), Number(month) - 1, Number(day));
+  const parts = DATE_FORMATTER.formatToParts(new Date(timestamp));
+  const displayDay = parts.find((part) => part.type === 'day')?.value;
+  const displayMonth = parts.find((part) => part.type === 'month')?.value.slice(0, 3);
+  const displayYear = parts.find((part) => part.type === 'year')?.value;
+  return displayDay && displayMonth && displayYear
+    ? `${displayDay} ${displayMonth} ${displayYear}`
+    : value;
 }
 
 function describeOperation(operation: ClockOperation): string {

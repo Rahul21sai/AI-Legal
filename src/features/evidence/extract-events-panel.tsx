@@ -99,7 +99,9 @@ export function ExtractEventsPanel({
       </div>
       <label htmlFor={`${packId}-evidence-text`}>Short evidence text</label>
       <textarea
+        autoComplete="off"
         id={`${packId}-evidence-text`}
+        name="evidenceText"
         onChange={(event) => setText(event.currentTarget.value)}
         rows={5}
         value={text}
@@ -111,6 +113,7 @@ export function ExtractEventsPanel({
       <label className="gemini-disclosure">
         <input
           checked={acknowledged}
+          name="geminiDisclosure"
           onChange={(event) => setAcknowledged(event.currentTarget.checked)}
           type="checkbox"
         />

@@ -21,6 +21,48 @@ Missing evidence produces **UNBOUND** and stops dependent rows. Dates before the
 - **Cheque dishonour** — reviewed arithmetic for Negotiable Instruments Act 1881 sections 138(b), 138(c), and 142(1)(b). Dispatch cannot satisfy the drawer-receipt anchor.
 - **RBI Ombudsman 2026** — the standard 30-day response period, a confirmed applicable-timeline override, later-of selection, and the 90-day period under RB-IOS 2026.
 
+## Evaluator parameter map
+
+| Parameter | Evidence in this repository |
+|---|---|
+| **Code Quality** | Strict TypeScript, exact dependencies, focused domain/AI/server/feature boundaries, current Gemini Interactions API, ESLint with zero warnings, and conventional incremental commits. |
+| **Security** | Same-origin API validation, Zod schemas, evidence grounding, CSP/HSTS/frame/permissions headers, bounded rate limiting, secret-safe logs, frozen lockfile, zero known dependency advisories, pinned CI actions, Dependabot, and `SECURITY.md`. |
+| **Efficiency** | Static application routes, zero database/RAG/vector store, client-side recomputation after binding, low-thinking extraction, narrow snapshots, a 2-second live-source timeout, and manual fallback. |
+| **Testing** | 110 Vitest tests plus 14 Playwright desktop/touch-mobile runs, including red-green domain tests, API failure paths, source drift, real browser flows, and axe. |
+| **Accessibility** | Semantic table/fieldset/label structure, skip link, keyboard navigation, visible focus, 44px targets, non-colour states, reduced motion, responsive stacked ledger, and zero serious/critical axe findings. |
+| **Problem Statement Alignment** | Legal information rather than advice; two grounded Indian statutory clocks; explicit UNBOUND/COVERAGE LIMIT states; source provenance; prompt/response inspection; and preparation of evidence questions without drafting or filing. |
+
+## Repository structure
+
+~~~text
+src/
+├── ai/                 # Versioned prompt, Gemini adapter, schemas, evidence guard
+├── app/                # Next.js pages, route handlers, metadata, global visual system
+├── domain/             # Date-only engine and reviewed rule packs
+├── features/           # Evidence, ledger, provenance, inspector, workbench UI
+├── server/             # Origin validation and bounded rate limiter
+└── sources/            # Snapshot registry, hashing, and live verification
+tests/e2e/              # Desktop and touch-mobile Playwright journeys
+docs/                   # Architecture, demo, QA, build record, design and plan
+.github/                # Pinned CI workflow and Dependabot policy
+~~~
+
+Dependencies point inward: UI and HTTP adapters consume domain contracts; the domain imports no React, network, SDK, or environment code.
+
+## Hackathon submission readiness
+
+| Required item | Status |
+|---|---|
+| Public GitHub repository under 10 MB | ✅ Public and comfortably below the limit |
+| Project description | ✅ This README |
+| Explicit GenAI architecture | ✅ Table above and `docs/GENAI-ARCHITECTURE.md` |
+| Working public deployment | ❌ Vercel login and deployment still required |
+| Working Gemini extraction in deployment | ❌ Add `GEMINI_API_KEY` to the production environment |
+| Walkthrough video under 4 minutes | ❌ Record after the production deployment; script is provided |
+| Editable Hack2Skill submission form | ⚠️ Must be confirmed in Rahul's signed-in event dashboard |
+
+Do not submit the final entry until every ❌ item is complete and the live URL/video are verified signed out.
+
 ## Architecture
 
 ~~~text
@@ -96,7 +138,7 @@ pnpm build
 
 Current verified baseline:
 
-- **108 Vitest tests** across domain, guard, routes, components, and source fallback.
+- **110 Vitest tests** across domain, guard, routes, components, and source fallback.
 - **14 Playwright tests** across desktop Chromium and touch-mobile Chromium.
 - Axe checks cover the empty, UNBOUND, and methodology states with no serious or critical violations.
 - Real-browser QA found no console error, failed request, horizontal overflow, or dead interaction.
@@ -104,6 +146,8 @@ Current verified baseline:
 ## Deployment
 
 The application targets Vercel with Node.js 22. The clean production domain must remain public during evaluation; hash-suffixed protected preview URLs are not suitable for submission. Verify `/`, `/method`, `/api/health`, manual calculation, Gemini extraction, and live-source fallback from a signed-out browser after every deployment.
+
+GitHub Actions repeats the frozen install with lifecycle scripts disabled, dependency audit, lint, type-check, unit tests, production build, and Playwright suite on every push to `main` and on every pull request.
 
 ## Tool provenance
 
@@ -116,3 +160,4 @@ The current implementation was developed in OpenAI Codex. No Google Antigravity 
 - [Build log](docs/BUILD-LOG.md)
 - [Browser QA report](docs/QA-REPORT.md)
 - [Approved design](docs/superpowers/specs/2026-09-20-proofclock-design.md)
+- [Contribution and coding standards](CONTRIBUTING.md)

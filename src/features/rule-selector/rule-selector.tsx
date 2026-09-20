@@ -15,6 +15,7 @@ export function RuleSelector({
       {packs.map((pack) => (
         <label className="rule-option" key={pack.id}>
           <input
+            autoComplete="off"
             checked={selected === pack.id}
             name="rule-pack"
             onChange={() => onSelect(pack.id)}

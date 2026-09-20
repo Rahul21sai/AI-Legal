@@ -176,7 +176,7 @@ ClockStep contains:
 - evidence required when a dependency is missing.
 - caveats that must accompany the row.
 
-EvaluationResult contains an ordered row for every step with state BOUND, UNBOUND, or INVALID_INPUT. A row includes its inputs, operation, output date when present, source reference, and named reason when absent.
+EvaluationResult contains an ordered row for every step with state BOUND, UNBOUND, INVALID_INPUT, or COVERAGE_LIMIT. A row includes its inputs, operation, output date when present, source reference, and named reason when absent. COVERAGE_LIMIT means the selected dates fall outside the reviewed rule pack; it never falls back to another legal regime.
 
 ### 6.2 Date semantics
 
@@ -464,4 +464,3 @@ The recording shows both a success state and an edge state, two dynamic inputs, 
 - User text is not persisted or logged.
 - The app has no claim, feature, or control that files legal documents or recommends an advocate.
 - Automated tests and accessibility checks pass before deployment.
-

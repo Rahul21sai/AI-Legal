@@ -34,7 +34,7 @@
 
 - package.json: exact dependency and script contract.
 - pnpm-lock.yaml: reproducible dependency graph.
-- .npmrc: exact-version and lockfile policy.
+- pnpm-workspace.yaml: pnpm 11 project settings using camelCase keys.
 - .nvmrc: Node 22.23.1.
 - .gitignore: excludes secrets, build output, test artifacts, and the pre-existing research corpus.
 - .env.example: server environment names without values.
@@ -106,7 +106,7 @@
 **Files:**
 - Create: package.json
 - Create: pnpm-lock.yaml
-- Create: .npmrc
+- Create: pnpm-workspace.yaml
 - Create: .nvmrc
 - Create: .gitignore
 - Create: .env.example
@@ -175,7 +175,7 @@ Create package.json with exact versions:
 }
 ~~~
 
-Set save-exact=true and engine-strict=true in .npmrc, Node 22.23.1 in .nvmrc, and add research-artifact paths plus .env*, .next, node_modules, coverage, test-results, playwright-report, and blob-report to .gitignore. Keep .env.example tracked.
+Set saveExact: true and engineStrict: true in pnpm-workspace.yaml, Node 22.23.1 in .nvmrc, and add research-artifact paths plus .env*, .next, node_modules, coverage, test-results, playwright-report, and blob-report to .gitignore. Keep .env.example tracked. Do not create .npmrc because this project has no registry credentials.
 
 - [ ] **Step 2: Install and record the exact graph**
 
@@ -215,7 +215,7 @@ Expected: PASS with no warnings.
 - [ ] **Step 7: Commit**
 
 ~~~powershell
-git add package.json pnpm-lock.yaml .npmrc .nvmrc .gitignore .env.example tsconfig.json next-env.d.ts next.config.ts eslint.config.mjs vitest.config.ts vitest.setup.ts playwright.config.ts src/app
+git add package.json pnpm-lock.yaml pnpm-workspace.yaml .nvmrc .gitignore .env.example tsconfig.json next-env.d.ts next.config.ts eslint.config.mjs vitest.config.ts vitest.setup.ts playwright.config.ts src/app
 git commit -m "chore: scaffold ProofClock application"
 ~~~
 

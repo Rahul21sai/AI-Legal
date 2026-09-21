@@ -167,7 +167,7 @@ Create package.json with exact versions:
     "@types/react-dom": "19.3.0",
     "eslint": "9.39.5",
     "eslint-config-next": "16.3.5",
-    "jsdom": "30.1.0",
+    "jsdom": "29.1.1",
     "typescript": "6.0.3",
     "vitest": "5.0.1"
   }

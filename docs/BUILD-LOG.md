@@ -60,3 +60,4 @@ This log records public, non-secret decisions and checkpoints for PromptWars pro
 - Reproduced the Vercel install failure: the project selected Node 24 because `engines.node` used an open-ended `>=22.23.1` range, while pnpm correctly rejected Node 24 against the exact development runtime contract.
 - The initial Node 22-major correction exposed a second boundary: Vercel's Node 22 image resolved to 22.0.0, below pnpm 11.19's Node 22.13 minimum.
 - Final correction aligned the repository, CI, and linked Vercel project on Node 24 LTS, retained error-on-mismatch behavior, and added a regression test preventing accidental major-version drift.
+- Vercel's Node 24 image resolved to 24.0.0; pinned the test-only jsdom dependency to 29.1.1, whose declared engine supports Node 24.0.0, instead of disabling engine checks. Dependency audit remained clean.

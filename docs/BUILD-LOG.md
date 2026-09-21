@@ -61,3 +61,4 @@ This log records public, non-secret decisions and checkpoints for PromptWars pro
 - The initial Node 22-major correction exposed a second boundary: Vercel's Node 22 image resolved to 22.0.0, below pnpm 11.19's Node 22.13 minimum.
 - Final correction aligned the repository, CI, and linked Vercel project on Node 24 LTS, retained error-on-mismatch behavior, and added a regression test preventing accidental major-version drift.
 - Vercel's Node 24 image resolved to 24.0.0; pinned the test-only jsdom dependency to 29.1.1, whose declared engine supports Node 24.0.0, instead of disabling engine checks. Dependency audit remained clean.
+- Classified Vercel's three blocked lifecycle scripts and explicitly denied the no-op Google GenAI preinstall, protobuf warning-only postinstall, and ESLint-only native resolver postinstall; retained `sharp` as the sole allowed native build. A forced clean install and production build passed with that policy.

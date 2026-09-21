@@ -2,4 +2,7 @@ saveExact: true
 engineStrict: true
 strictPeerDependencies: true
 allowBuilds:
+  '@google/genai': false
+  protobufjs: false
   sharp: true
+  unrs-resolver: false

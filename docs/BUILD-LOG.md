@@ -54,3 +54,9 @@ This log records public, non-secret decisions and checkpoints for PromptWars pro
 - Added form metadata, 44px navigation targets, hover/touch states, balanced headings, tabular numerals, locale-driven date formatting, and a date-format regression test.
 - Expanded the README with an evaluator evidence map, repository structure, and an honest submission-readiness checklist.
 - Reverified 110 Vitest tests, 14 Playwright runs, lint, strict TypeScript, production build, dependency audit, and frozen script-disabled installation.
+
+## 21 September 2026 — Vercel runtime correction
+
+- Reproduced the Vercel install failure: the project selected Node 24 because `engines.node` used an open-ended `>=22.23.1` range, while pnpm correctly rejected Node 24 against the exact development runtime contract.
+- Changed both repository runtime ranges to `22.x`, retained error-on-mismatch behavior, and added a regression test that prevents accidental major-version upgrades.
+- Updated the linked Vercel project setting from Node 24.x to Node 22.x and reverified the frozen install and production build locally.

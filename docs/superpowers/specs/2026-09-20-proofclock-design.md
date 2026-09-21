@@ -425,7 +425,7 @@ The production target is Vercel using the clean project domain. Gemini is the de
 
 Deployment checks:
 
-- Node.js 22 and pnpm 11 are pinned.
+- Node.js 24 LTS and pnpm 11 are pinned.
 - GEMINI_API_KEY and GEMINI_MODEL are server-only environment variables.
 - Function duration accommodates the model timeout, while manual mode never waits on the server.
 - Deployment Protection is disabled from 26 through 28 September.

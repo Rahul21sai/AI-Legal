@@ -6,7 +6,7 @@
 
 **Architecture:** A dependency-free domain layer owns date-only arithmetic and rule-pack evaluation. React provides a client-side evidence ledger and computation worksheet; thin Next.js routes adapt the Gemini and live-source ports. Committed source snapshots and manual date entry remain functional when every external service is unavailable.
 
-**Tech Stack:** Node.js 22.23.1, pnpm 11.19.0, Next.js 16.3.5, React 19.3.0, TypeScript 6.0.3, Zod 4.6.5, Google GenAI SDK 2.23.0, Temporal polyfill 0.5.1, Vitest 5.0.1, Testing Library, Playwright 1.63.0, vanilla CSS.
+**Tech Stack:** Node.js 24.19.0, pnpm 11.19.0, Next.js 16.3.5, React 19.3.0, TypeScript 6.0.3, Zod 4.6.5, Google GenAI SDK 2.23.0, Temporal polyfill 0.5.1, Vitest 5.0.1, Testing Library, Playwright 1.63.0, vanilla CSS.
 
 **Spec:** docs/superpowers/specs/2026-09-20-proofclock-design.md
 
@@ -35,7 +35,7 @@
 - package.json: exact dependency and script contract.
 - pnpm-lock.yaml: reproducible dependency graph.
 - pnpm-workspace.yaml: pnpm 11 project settings using camelCase keys.
-- .nvmrc: Node 22.23.1.
+- .nvmrc: Node 24.19.0.
 - .gitignore: excludes secrets, build output, test artifacts, and the pre-existing research corpus.
 - .env.example: server environment names without values.
 - tsconfig.json, next.config.ts, eslint.config.mjs: strict build and security-header configuration.
@@ -136,7 +136,7 @@ Create package.json with exact versions:
   "version": "0.1.0",
   "private": true,
   "packageManager": "pnpm@11.19.0",
-  "engines": { "node": ">=22.23.1" },
+  "engines": { "node": "24.x" },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -174,7 +174,7 @@ Create package.json with exact versions:
 }
 ~~~
 
-Set saveExact: true and engineStrict: true in pnpm-workspace.yaml, Node 22.23.1 in .nvmrc, and add research-artifact paths plus .env*, .next, node_modules, coverage, test-results, playwright-report, and blob-report to .gitignore. Keep .env.example tracked. Do not create .npmrc because this project has no registry credentials.
+Set saveExact: true and engineStrict: true in pnpm-workspace.yaml, Node 24.19.0 in .nvmrc, and add research-artifact paths plus .env*, .next, node_modules, coverage, test-results, playwright-report, and blob-report to .gitignore. Keep .env.example tracked. Do not create .npmrc because this project has no registry credentials.
 
 - [ ] **Step 2: Install and record the exact graph**
 

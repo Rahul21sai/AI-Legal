@@ -113,7 +113,7 @@ Model output is constrained to a closed event enum plus an exact `evidenceQuote`
 
 ## Run locally
 
-Requirements: Node.js 22.23.1 and pnpm 11.19.0.
+Requirements: Node.js 24.19.0 and pnpm 11.19.0.
 
 ~~~powershell
 corepack enable
@@ -145,7 +145,7 @@ Current verified baseline:
 
 ## Deployment
 
-The application targets Vercel with Node.js 22. The clean production domain must remain public during evaluation; hash-suffixed protected preview URLs are not suitable for submission. Verify `/`, `/method`, `/api/health`, manual calculation, Gemini extraction, and live-source fallback from a signed-out browser after every deployment.
+The application targets Vercel with Node.js 24 LTS. The clean production domain must remain public during evaluation; hash-suffixed protected preview URLs are not suitable for submission. Verify `/`, `/method`, `/api/health`, manual calculation, Gemini extraction, and live-source fallback from a signed-out browser after every deployment.
 
 GitHub Actions repeats the frozen install with lifecycle scripts disabled, dependency audit, lint, type-check, unit tests, production build, and Playwright suite on every push to `main` and on every pull request.
 
